@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body><br>
+    <br>
+    <div class="d-flex  align-items-center  justify-content-center mb-3">
+      <h1> Book's Index</h1>
+    </div>
+    <div class="container">
+      <% if flash[:notice] %>
+        <% flash.each do |name,message| %>
+          <p class="text-danger"><%= message%></p>
+        <% end %>
+      <% end %>
+      <table class="table  table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Book Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <% if current_user %>
+        <%= link_to "Log-Out", destroy_user_session_path, class:"btn btn-danger", data: {turbo_method: :delete} %><br>
+        <% end %>
+        <br>
+        <tbody>
+          <% Book.all.each do |book|%>
+            <tr>
+              <th scope="row"><%=book.name%></th>
+              <td><%=book.description%></td>
+              <td><%=book.price%></td>
+              <td><button type="button" class="btn btn-link"><%= link_to "Show", book_path(book), class:"btn btn-success", method: :get %></button>
+                <%# <% if current_user.role == "admin" %>
+                <button type="button" class="btn btn-link"><%= link_to " Edit", edit_book_path(book), class:"btn btn-secondary", method: :get %></button>
+                <button type="button" class="btn btn-link"><%= button_to " Destroy", book_path(book), class:"btn btn-danger", method: :delete %></button>
+              </td>
+              <%# <% end %>
+            </tr>
+          <%end%>
+        </tbody>
+      </table>
+      <br>
+      <%# <% if current_user.role == "admin" %>
+      <button type="button " class="btn btn-link"><%= link_to "Add new book", new_book_path, class:"btn btn-primary", method: :get %></button>
+      <%# <% end %>
+    </body>
+  </html>
