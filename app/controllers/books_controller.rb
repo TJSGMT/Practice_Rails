@@ -3,7 +3,7 @@ class BooksController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index, :destroy]
 
   def index
-    @books = Book.all
+    @books = Book.page(params[:page])
   end
 
   def new

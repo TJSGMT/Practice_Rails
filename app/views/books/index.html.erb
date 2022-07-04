@@ -30,7 +30,7 @@
         <% end %>
         <br>
         <tbody>
-          <% Book.all.each do |book|%>
+          <% @books.each do |book|%>
             <tr>
               <th scope="row"><%=book.name%></th>
               <td><%=book.description%></td>
@@ -49,5 +49,6 @@
       <%# <% if current_user.role == "admin" %>
       <button type="button " class="btn btn-link"><%= link_to "Add new book", new_book_path, class:"btn btn-primary", method: :get %></button>
       <%# <% end %>
+      <%= paginate @books %>
     </body>
   </html>
