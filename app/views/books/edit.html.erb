@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="card" style="width: 68rem;">
+    <div class="card-body">
+      <h4 class="card-title text-center">Add New Book</h4>
+      <%=form_for  @book, reamote: false do |f| %>
+        <p><%= f.text_field :name,class:"form-control",placeholder: "Enter Name" %>
+        <p><%= f.text_field :description,class:"form-control",placeholder: "Enter Description" %>
+        <p><%= f.text_field :price,class:"form-control",placeholder:"Enter Price"%></p>
+        <h2><%= f.submit class:"btn btn-primary"%></h2>
+       <%end%>
+    </div>
+  </div>
+</div>
