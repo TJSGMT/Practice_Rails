@@ -1,4 +1,10 @@
-<form action="<%= post_comments_path(post) %>" method="post">
-  <textarea name="comment[context]" rows="2" cols="20"></textarea>
-  <input type="submit" value="Post">
+<form action="<%= post_comments_path(@post) %>" method="post">
+  <%if !parent.nil? %>
+    <input type="hidden" name="comment[parent_id]" value="<%= parent.id %>">
+  <% end %>
+  <div>
+    <textarea class="form-control" name="comment[context]" rows="2" cols="20" placeholder="please do comment"></textarea><br>
+  </div>
+  <input class="btn btn-primary" type="submit" value="Post">
 </form>
+ 
