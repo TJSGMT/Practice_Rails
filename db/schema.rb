@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_06_142919) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_15_055351) do
+  create_table "addresses", force: :cascade do |t|
+    t.string "city"
+    t.string "street"
+    t.integer "place_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_addresses_on_place_id"
+  end
+
   create_table "books", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -31,6 +40,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_06_142919) do
   end
 
   create_table "homes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -56,6 +71,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_06_142919) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "addresses", "places"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
 end

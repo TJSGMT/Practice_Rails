@@ -1,0 +1,20 @@
+<%= render 'shared/errors', object: place%>
+<%= form_for place do |f|%>
+  <div>
+    <%= f.label :title%>
+    <%= f.text_field :title%>
+  </div>
+  <div>
+    <p><Strong>Address:</strong></p>
+    <%= f.fields_for :addresses do |address|%>
+        <div>
+            <%= address.label :city %><br>
+            <%= address.text_field :city %>
+            <%= address.label :street %>
+            <%= address.text_field :street %>
+            <%= address.check_box :_destroy %>
+        </div><br>
+    <%end%>    
+  </div>
+  <%=f.submit%>
+<%end%>
