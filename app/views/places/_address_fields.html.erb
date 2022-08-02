@@ -1,0 +1,9 @@
+<div calss="nested-fields">
+  <%= f.label :city%>
+  <%= f.text_field :city %>
+  <%= f.label :street%>
+  <%= f.text_field :street %>
+
+  <%= f.check_box :_destroy%>
+  <%= link_to_remove_association "Remove Address",f%>
+</div>

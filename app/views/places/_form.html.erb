@@ -6,15 +6,16 @@
   </div>
   <div>
     <p><Strong>Address:</strong></p>
-    <%= f.fields_for :addresses do |address|%>
-        <div>
-            <%= address.label :city %><br>
-            <%= address.text_field :city %>
-            <%= address.label :street %>
-            <%= address.text_field :street %>
-            <%= address.check_box :_destroy %>
-        </div><br>
-    <%end%>    
+    <div id="addresses">
+      <%= f.fields_for :addresses do |address|%>
+        <%= render 'address_fields',f: address%>
+      <%end%>
+      <div class="links">
+        <%= link_to_add_association 'add address',f, :addresses%>
+      </div>
+
+      <p class="count">Total: <span><%=@place.addresses.count%></span></p>
+    </div>      
   </div>
   <%=f.submit%>
 <%end%>

@@ -6,7 +6,7 @@
         <% place.addresses.each do |addr|%>
           <li>
             <%= addr.city%>,<%= addr.street%>
-            <strong><%= place.title%></strong> | <%= link_to 'Edit place',edit_place_path(place)%> 
+            <strong><%= place.title%></strong> | <%= link_to 'Edit place',edit_place_path(place)%> ``
           </li>
         <%end%>
       </ul> 

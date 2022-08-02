@@ -74,3 +74,5 @@ end
 gem "devise"
 gem "cancancan"
 gem "kaminari"
+gem 'cocoon'
+gem 'jquery-ui-rails'
